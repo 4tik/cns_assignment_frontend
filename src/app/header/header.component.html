@@ -1,0 +1,10 @@
+<p>
+    <mat-toolbar color="primary">
+      <span>Project Management</span>
+      <div *ngIf = "isAuthenticated" class="e-toolbar">
+        <button mat-raised-button color="accent" (click)="generateReport()">Download Report</button>
+        <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+      </div>
+    
+    </mat-toolbar>
+  </p>

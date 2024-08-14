@@ -1,0 +1,30 @@
+<div class="container">
+    <form #singupForm="ngForm" (ngSubmit)="singup(singupForm)">
+        <div class="card p-5 mt-2">
+            <div align="text-center" style="margin-bottom: 20px;">
+                <button mat-raised-button color="accent">New User Registration</button>
+            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="username" name="userName" [(ngModel)]="register.userName" required>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="e-mail" name="email" [(ngModel)]="register.email" required>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" [(ngModel)]="register.password" placeholder="password" required>
+            </mat-form-field>
+        
+            <mat-divider></mat-divider>
+        
+            <div class="text-center mt-3">
+                <button mat-raised-button color="primary" class="m-2">Registration</button>
+                <button mat-raised-button color="accent" class="m-2" routerLink="/login">Login</button>
+            </div>
+        </div>
+    </form>
+</div>

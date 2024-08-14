@@ -1,0 +1,26 @@
+<div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="singin(loginForm)">
+        <div class="card p-5 mt-2">
+            <div align="text-center" style="margin-bottom: 20px;">
+                <button mat-raised-button color="accent">User Login</button>
+            </div>
+            <p *ngIf="errorText" class="error-message">{{errorText}}</p>
+            <mat-form-field appearance="outline">
+                <mat-label>username</mat-label>
+                <input matInput type="text" placeholder="username" name="userName" [(ngModel)]="login.userName" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>password</mat-label>
+                <input matInput type="password" placeholder="password" name="password" [(ngModel)]="login.password" required>
+            </mat-form-field>
+            
+            <mat-divider></mat-divider>
+    
+            <div class="text-center mt-3">
+                <button mat-raised-button color="primary" class="m-2">Login</button>
+                <button mat-raised-button color="accent" class="m-2" routerLink="/register">Registration</button>
+            </div>
+        </div>
+    </form>
+</div>

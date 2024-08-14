@@ -1,0 +1,68 @@
+<div class="container">
+    <div align="right">
+        <button mat-raised-button color="accent" routerLink="/home">Manage Project</button>
+    </div>
+    <p *ngIf="errorText" class="error-message">{{errorText}}</p>
+    <form #projectForm="ngForm" (ngSubmit)="saveProject(projectForm)">
+        <div class="card p-5 mt-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Name</mat-label>
+                <input matInput placeholder="Project Name" [(ngModel)]="project.name" name="name" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>Introduce</mat-label>
+                <input matInput placeholder="Introduce" [(ngModel)]="project.introduce" name="introduce" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="project.startDateTime" name="startDateTime">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="project.endDateTime" name="endDateTime">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Project Status</mat-label>
+                <select matNativeControl name="status" [(ngModel)]="project.status" required>
+                  <option value="0">PRE</option>
+                  <option value="1">START</option>
+                  <option value="3">END</option>
+                </select>
+              </mat-form-field>
+    
+            <!-- <div>
+                <label><strong>Status</strong></label>
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="project.status" name="status">
+                    <mat-radio-button [checked]="checkStatus(0)" (click)="selectStatus(0)" value="0">PRE</mat-radio-button >
+                    <mat-radio-button [checked]="checkStatus(1)" (click)="selectStatus(1)" value="1">START</mat-radio-button>
+                    <mat-radio-button [checked]="checkStatus(3)" (click)="selectStatus(3)" value="3">END</mat-radio-button>
+                </mat-radio-group>
+            </div> -->
+    
+
+            <div>
+                <label><strong>Assign Member</strong></label>
+                <section class="example-section">
+                    <span *ngFor="let user of members">
+                        <mat-checkbox [disabled]="isDisableCheck && !userIdIsExist(user.id)" (change)="checkUser($event)" *ngIf="project.userId!=user.id" value="{{user.id}}" class="example-margin">{{user.userName}}</mat-checkbox>
+                    </span>
+                </section>
+                <span *ngIf="limitUserError" class="error-message">{{limitUserError}}</span>
+            </div>
+
+            <mat-divider></mat-divider>
+    
+            <div class="text-center mt-3">
+                <button mat-raised-button color="primary" class="m-2">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
